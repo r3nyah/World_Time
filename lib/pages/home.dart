@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     try {
-      data = ModalRoute.of(context)!.settings.arguments as Map;
+      data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
     }
     catch (e) {
       data = data;
@@ -43,8 +43,16 @@ class _HomeState extends State<Home> {
           child: Column(
             children: <Widget>[
               FlatButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/location');
+                  onPressed: () async{
+                    dynamic result = await Navigator.pushNamed(context, '/location');
+                    setState(() {
+                      data = {
+                        'time': result['time'],
+                        'location': result['location'],
+                        'isDaytime': result['isDaytime'],
+                        'flag': result['flag'],
+                      };
+                    });
                   },
                   icon: Icon(
                     Icons.edit_location,
