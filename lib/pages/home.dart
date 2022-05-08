@@ -39,6 +39,26 @@ class _HomeState extends State<Home> {
                     'Edit Location'
                 )
             ),
+            SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  data['location'],
+                  style: TextStyle(
+                    fontSize: 28.0,
+                    letterSpacing: 2.0,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20.0),
+            Text(
+              data['time'],
+              style: TextStyle(
+                fontSize: 66.0,
+              ),
+            )
           ],
         ),
       ),
