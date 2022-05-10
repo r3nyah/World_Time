@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:convert';
 
 class Home extends StatefulWidget {
@@ -26,8 +27,9 @@ class _HomeState extends State<Home> {
     }
     print(data);
 
-    String bgImage = data['isDaytime'] ? 'day.png' : 'night.png' ;
-    Color?bgColor = data['isDaytime'] ? Colors.blue : Colors.indigo[700];
+    String bgImage = data['isDaytime'] ? 'daycat.jpg' : 'nightcat.jpg' ;
+    Color?bgColor = data['isDaytime'] ? Colors.blue[200] : Colors.grey[900];
+    Color?txtColor = data['isDaytime'] ? Colors.black : Colors.white;
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -42,6 +44,7 @@ class _HomeState extends State<Home> {
           ),
           child: Column(
             children: <Widget>[
+              SizedBox(height: 150.0),
               FlatButton.icon(
                   onPressed: () async{
                     dynamic result = await Navigator.pushNamed(context, '/location');
@@ -56,12 +59,12 @@ class _HomeState extends State<Home> {
                   },
                   icon: Icon(
                     Icons.edit_location,
-                    color: Colors.grey[300],
+                    color: txtColor,
                   ),
                   label: Text(
                     'Edit Location',
                     style: TextStyle(
-                      color: Colors.grey[300],
+                      color: txtColor,
                     ),
                   )
               ),
@@ -74,7 +77,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                       fontSize: 28.0,
                       letterSpacing: 2.0,
-                      color: Colors.white,
+                      color: txtColor,
                     ),
                   ),
                 ],
@@ -84,8 +87,13 @@ class _HomeState extends State<Home> {
                   data['time'],
                   style: TextStyle(
                       fontSize: 66.0,
-                      color: Colors.white
+                    color: txtColor,
                   ),
+              ),
+              SizedBox(height: 50.0),
+              SpinKitPumpingHeart(
+                color: Colors.pink[600],
+                size: 50.0,
               )
             ],
           ),

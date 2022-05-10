@@ -51,10 +51,16 @@ class _ChooseLocationState extends State<ChooseLocation> {
               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
               child: Card(
                 child: ListTile(
+                  tileColor: Colors.grey[300],
                   onTap: () {
                     updateTime(index);
                   },
-                  title: Text(locations[index].location),
+                  title: Text(
+                      locations[index].location,
+                    style: TextStyle(
+                      fontSize: 24.0,
+                    ),
+                  ),
                   leading: CircleAvatar(
                     backgroundImage: AssetImage('assets/${locations[index].flag}'),
                   ),
